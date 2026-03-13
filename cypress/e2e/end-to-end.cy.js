@@ -23,7 +23,10 @@ describe('Testes End To End do fluxo de cadastro e login', () => {
         cy.get('#user-name').should('contain', nome);
         //login
        cy.visit('/login.html');
-        cy.login(nome, email);
+        cy.login(email, 'senha321');
+        // Resultado esperado 
+        cy.url().should('include', 'dashboard');
+        cy.get('#user-name').should('be.visible').and('contain', nome);
 
     });
 });
